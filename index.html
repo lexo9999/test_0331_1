@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Roboto", sans-serif;
+        }
+        .section {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: black;
+            overflow: hidden;
+        }
+        .section .text {
+            position: relative;
+            color: #fff;
+            margin: 40px;
+            max-width: 800px;
+            user-select: none;
+            font-size: 1em;
+            /* background-color: orange; */
+        }
+        .section .text span{
+            position: relative;
+            display: inline-block; 
+            cursor: pointer;
+        }
+        .section .text span.active {
+            animation: smoke 2s linear forwards;
+            transform-origin: bottom;
+        }
+        @keyframes smoke{
+            0%{
+                opacity: 1;
+                filter: blur(0);
+                transform: translateX(0) translateY(0) rotate(0deg) scale(1);
+            }
+
+            50%{
+                opacity: 1;
+                pointer-events: none;
+            }
+
+            100%{
+                opacity: 0;
+                filter: blur(20px);
+                transform: translateX(300px) translateY(-300px) rotate(720deg) scale(4);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="section">
+        <p class="text"><span class="active">test</span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ullam iusto harum vero, culpa magni odio praesentium amet laboriosam accusantium consequuntur, tempore dolorum temporibus. Blanditiis, doloribus a. Repellat quod, eum laboriosam unde ducimus fugit, blanditiis eaque minima voluptate dolore recusandae alias, obcaecati quidem quibusdam voluptatibus facere quia aliquam placeat. Esse non nam ad in ducimus dolore unde, exercitationem, velit consequuntur consequatur excepturi nemo quaerat omnis veniam sint, itaque atque inventore. Vel ipsa esse cum sint dolore repellat optio perspiciatis repudiandae consequatur assumenda? Saepe molestiae sunt earum sed, ratione, unde exercitationem nostrum reiciendis voluptatum nobis rerum cumque accusantium officia amet id provident tempora, dolorem consequuntur quo asperiores dolores! Repellendus mollitia impedit rerum quae temporibus. Ea, voluptatum. Esse deleniti labore quas eligendi? Voluptas quod eligendi error, ea commodi culpa ullam ipsum eveniet quae architecto placeat dignissimos eum repellat facere nemo veniam temporibus voluptates deleniti labore atque at, ab omnis magnam? Et magni nisi quidem neque temporibus ab sunt tempore minima numquam ex facilis sint saepe laborum, quis libero necessitatibus atque laboriosam a harum provident minus recusandae voluptatibus dolor repudiandae. Alias aperiam quam aliquid? Itaque, provident. Iusto eos, ipsam neque praesentium mollitia consequuntur aut impedit facilis eaque, esse fuga eveniet adipisci, ipsa molestias iure illo commodi dolores similique debitis nisi asperiores ducimus quis! Veritatis nostrum vitae magni tempore itaque omnis minus eveniet natus ab neque ducimus obcaecati accusamus, exercitationem praesentium sint blanditiis nulla aperiam tempora sed velit eius ipsam consequatur officia. Tenetur sequi dolore dolorum? Facere ea iusto est facilis, consequuntur sint esse possimus quod unde illo vero, ducimus deleniti itaque a necessitatibus asperiores ad numquam soluta beatae dolor impedit neque autem voluptate? Dicta eius exercitationem commodi dignissimos, et iure beatae cum doloremque? Adipisci suscipit aperiam sit totam doloribus tempora itaque, nemo aliquid, quae laboriosam perferendis necessitatibus molestias officiis! Adipisci repellendus animi facere? Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis placeat saepe possimus alias magnam quia eius nostrum culpa sunt pariatur, magni et inventore ad quae explicabo! Quibusdam sequi tempora nostrum recusandae! Voluptatem minus asperiores necessitatibus odit rerum eos sed exercitationem optio perferendis cum veritatis, repellendus officiis a nihil itaque soluta?</p>
+        
+    </div>
+    <script>
+        const text = document.querySelector('.text')
+        text.innerHTML = text.textContent.replace(/\S/g,"<span>$&</span>")
+
+        const letters = document.querySelectorAll('span');
+        for (let i=0; i<letters.length; i++){
+            letters[i].addEventListener('mouseover', function() {
+                letters[i].classList.add('active');
+        })
+    }
+    </script>
+</body>
+</html>
